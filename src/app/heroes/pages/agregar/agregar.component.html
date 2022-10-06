@@ -52,9 +52,16 @@
       <input matInput type="url" [(ngModel)]="heroe.alt_img" required />
     </mat-form-field>
     <br />
-    <button mat-raised-button color="warn" (click)="guardar()">
-      <mat-icon>save</mat-icon> Guardar
-    </button>
+
+    <div fxLayout="row" fxLayoutGap="20px">
+      <button mat-raised-button color="primary" (click)="guardar()">
+        <mat-icon>save</mat-icon> Guardar
+      </button>
+      <button *ngIf="heroe.id" mat-raised-button color="warn" (click)="borrarHeroe()">
+        <mat-icon>delete</mat-icon>
+        Eliminar
+      </button>
+    </div>
   </div>
 
   <div fxFlex="50">
