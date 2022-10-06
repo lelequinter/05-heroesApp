@@ -1,5 +1,9 @@
 <h1>
-  Nuevo Heroe <small>{{ heroe.superhero }}</small>
+  {{ heroe.id ? "Editar" : "Nuevo" }}
+  <!-- <ng-container *ngIf="!heroe.id; else editar">Nuevo</ng-container>
+  <ng-template #editar>Editar</ng-template> -->
+  Heroe
+  <small>{{ heroe.superhero }}</small>
 </h1>
 
 <div fxLayout="row" fxLayoutGap="40px" fxLayout.xs="column">
@@ -55,9 +59,15 @@
 
     <div fxLayout="row" fxLayoutGap="20px">
       <button mat-raised-button color="primary" (click)="guardar()">
-        <mat-icon>save</mat-icon> Guardar
+        <mat-icon>save</mat-icon>
+        {{ heroe.id ? "Actualizar" : "Crear" }}
       </button>
-      <button *ngIf="heroe.id" mat-raised-button color="warn" (click)="borrarHeroe()">
+      <button
+        *ngIf="heroe.id"
+        mat-raised-button
+        color="warn"
+        (click)="borrarHeroe()"
+      >
         <mat-icon>delete</mat-icon>
         Eliminar
       </button>
